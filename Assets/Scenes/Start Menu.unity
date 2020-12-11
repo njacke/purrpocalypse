@@ -471,10 +471,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 584162932}
-    - target: {fileID: 1126113559, guid: 1b9b63cc4380e5344a7a35eff4cce123, type: 3}
+    - target: {fileID: 1304469502, guid: 1b9b63cc4380e5344a7a35eff4cce123, type: 3}
+      propertyPath: m_Name
+      value: Exit Button BG
+      objectReference: {fileID: 0}
+    - target: {fileID: 1328451143, guid: 1b9b63cc4380e5344a7a35eff4cce123, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 584162932}
+    - target: {fileID: 1428149294, guid: 1b9b63cc4380e5344a7a35eff4cce123, type: 3}
+      propertyPath: m_Name
+      value: Exit Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738896729, guid: 1b9b63cc4380e5344a7a35eff4cce123, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980887982, guid: 1b9b63cc4380e5344a7a35eff4cce123, type: 3}
+      propertyPath: m_Name
+      value: Exit Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980887984, guid: 1b9b63cc4380e5344a7a35eff4cce123, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 584162932}
+    - target: {fileID: 1980887984, guid: 1b9b63cc4380e5344a7a35eff4cce123, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 7028118923872137621, guid: 1b9b63cc4380e5344a7a35eff4cce123, type: 3}
       propertyPath: m_Pivot.x
       value: 0

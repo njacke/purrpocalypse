@@ -14,8 +14,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] GameObject projectile;
-    [SerializeField] float projectileSpeed = 10f;
-    
+    [SerializeField] float projectileSpeedY = 10f;
+    [SerializeField] float projectileSpeedX = 0f;
+
+
     [Header("Effects")]
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
@@ -53,7 +55,7 @@ public class Enemy : MonoBehaviour
             projectile,
             transform.position,
             Quaternion.identity) as GameObject;
-        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeedX, -projectileSpeedY);
         AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
     }
 
