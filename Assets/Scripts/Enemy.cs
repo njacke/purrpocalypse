@@ -13,9 +13,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
-    [SerializeField] GameObject projectile;
+    [SerializeField] int projectiles = 1;
+    [SerializeField] GameObject firstProjectile;
     [SerializeField] float projectileSpeedY = 10f;
     [SerializeField] float projectileSpeedX = 0f;
+    [SerializeField] GameObject secondProjectile;
+    [SerializeField] float projectile2SpeedY = 10f;
+    [SerializeField] float projectile2SpeedX = 0f;
+
 
 
     [Header("Effects")]
@@ -52,19 +57,37 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         GameObject laser = Instantiate(
-            projectile,
+            firstProjectile,
             transform.position,
             Quaternion.identity) as GameObject;
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeedX, -projectileSpeedY);
         AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
+        
+        if (projectiles > 1)
+        {
+            GameObject laser2 = Instantiate(
+                firstProjectile,
+                transform.position,
+                Quaternion.identity) as GameObject;
+            laser2.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile2SpeedX, -projectile2SpeedY);
+            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
+        }
     }
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-        if (!damageDealer) { return; }
-        ProcessHit(damageDealer);
+        if (other.gameObject.tag == "Player") //kamikaze player attack
+        {
+            Die();
+        }
+        else
+        {
+            DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+            if (!damageDealer) { return; }
+            ProcessHit(damageDealer);
+        }
     }
 
     private void ProcessHit(DamageDealer damageDealer)

@@ -46,9 +46,17 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
-        if (!damageDealer) { return; }
-        ProcessHit(damageDealer);
+        if (other.gameObject.tag == "Enemy" ) //sudden death before enemy gets killed from Hit()
+        {
+            Die();
+        }
+        else
+        {
+            DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
+            if (!damageDealer) { return; }
+            ProcessHit(damageDealer);
+        }
+
     }
 
     private void ProcessHit(DamageDealer damageDealer)

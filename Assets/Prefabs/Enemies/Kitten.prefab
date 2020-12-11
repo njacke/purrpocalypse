@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 964937402508897299}
   - component: {fileID: -3313743601494081273}
   - component: {fileID: 1310662264686832901}
-  - component: {fileID: 174708602070295077}
   m_Layer: 9
   m_Name: Kitten
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,9 +131,13 @@ MonoBehaviour:
   shotCounter: 0
   minTimeBetweenShots: 1.9
   maxTimeBetweenShots: 2.1
-  projectile: {fileID: 7049940137874867403, guid: b75b43e3a8a9cf743bbaabeabbb42532, type: 3}
+  projectiles: 1
+  firstProjectile: {fileID: 7049940137874867403, guid: b75b43e3a8a9cf743bbaabeabbb42532, type: 3}
   projectileSpeedY: 5
   projectileSpeedX: 0
+  secondProjectile: {fileID: 0}
+  projectile2SpeedY: 10
+  projectile2SpeedX: 0
   deathVFX: {fileID: 1333086443587916795, guid: 8dc5c2662a8479349ba81fcdb1cc5570, type: 3}
   durationOfExplosion: 1
   deathSound: {fileID: 8300000, guid: cebbcacf1de18154e8c0b93ded077618, type: 3}
@@ -162,16 +165,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &174708602070295077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4861853302944693312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed10d1c8f320374b8e5ebab40e4a818, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 200
