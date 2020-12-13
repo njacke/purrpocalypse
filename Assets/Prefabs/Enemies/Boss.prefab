@@ -98,8 +98,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phaseOnePath: {fileID: 6844963078480526005, guid: e2c62f45f3e80fc4da13aad6dd9e9897, type: 3}
-  moveSpeed: 3
-  health: 100
+  moveSpeed: 2
+  health: 900
+  AOEProjectile: {fileID: 7049940137874867403, guid: a9925bc95f36cfe4ca895a02f2b7ed43, type: 3}
+  AOEShotDelay: 0.5
+  AOEProjectileOneSpeedY: 0
+  AOEProjectileOneSpeedX: 5
+  AOEProjectileTwoSpeedY: 2.5
+  AOEProjectileTwoSpeedX: 2.5
+  AOEProjectileThreeSpeedY: 5
+  AOEProjectileThreeSpeedX: 0
+  AOEProjectileFourSpeedY: 2.5
+  AOEProjectileFourSpeedX: -2.5
+  AOEShootSoundVolume: 0.5
+  AOEShootSound: {fileID: 8300000, guid: 4befaffab5238884b80bfd57221ceab2, type: 3}
 --- !u!50 &-2868385784921409281
 Rigidbody2D:
   serializedVersion: 4

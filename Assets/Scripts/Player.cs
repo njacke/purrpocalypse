@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy" ) //sudden death before enemy gets killed from Hit()
         {
+            health = 0;
             Die();
         }
         else

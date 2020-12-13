@@ -4,55 +4,88 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    [Header("Boss")]
     [SerializeField] GameObject phaseOnePath;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float health = 100;
 
+    [Header("Attack AOE")]
+    [SerializeField] GameObject AOEProjectile;
+    [SerializeField] float AOEShotDelay = 1f;
+    [SerializeField] float AOEProjectileOneSpeedY = 5f;
+    [SerializeField] float AOEProjectileOneSpeedX = 0f;
+    [SerializeField] float AOEProjectileTwoSpeedY = 5f;
+    [SerializeField] float AOEProjectileTwoSpeedX = 0f;
+    [SerializeField] float AOEProjectileThreeSpeedY = 5f;
+    [SerializeField] float AOEProjectileThreeSpeedX = 0f;
+    [SerializeField] float AOEProjectileFourSpeedY = 5f;
+    [SerializeField] float AOEProjectileFourSpeedX = 0f;
+
+    [SerializeField] [Range(0, 1)] float AOEShootSoundVolume = 0.5f;
+    [SerializeField] AudioClip AOEShootSound;
+
+    float AOETimer;
+
+
+    Vector3 centerPos = new Vector3(0, 0, 0);
+
+    bool startAddsSpawned = false;
+    AddSpawner startAddsScript;
+    float phaseOneAddsDelay = 2f;
+    float phaseOneAddsTimer;
+
+
+
+
+
     List<Transform> waypoints;
     int waypointIndex = 0;
 
-    /*   [Header("Enemy")]
-    [SerializeField] float health = 100;
-    [SerializeField] int scoreVaule = 100;
-
-
-    [Header("Projectile")]
-    [SerializeField] float shotCounter;
-    [SerializeField] float minTimeBetweenShots = 0.2f;
-    [SerializeField] float maxTimeBetweenShots = 3f;
-    [SerializeField] int projectiles = 1;
-    [SerializeField] GameObject firstProjectile;
-    [SerializeField] float projectileSpeedY = 10f;
-    [SerializeField] float projectileSpeedX = 0f;
-    [SerializeField] GameObject secondProjectile;
-    [SerializeField] float projectile2SpeedY = 10f;
-    [SerializeField] float projectile2SpeedX = 0f;
-
-
-
+    /* 
     [Header("Effects")]
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
     [SerializeField] AudioClip deathSound;
     [SerializeField] [Range(0, 1)] float deathSoundVolume;
-    [SerializeField] AudioClip shootSound;
-    [SerializeField] [Range(0, 1)] float shootSoundVolume;
 
    */
     // Start is called before the first frame update
     void Start()
     {
-        //    shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        startAddsScript = (AddSpawner)GameObject.Find("Start Adds").GetComponent(typeof(AddSpawner));
+
         waypoints = GetWaypoints();
-        transform.position = waypoints[waypointIndex].transform.position;
+        transform.position = centerPos;
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        /*if (startAddsSpawned == false)
+        {
+            startAddsSpawned = true;
+            StartCoroutine(startAddsScript.SpawnAllWaves());
+        }*/
         Move();
-        //CountDownAndShoot();
+
+        /*if (health <= 500)
+        {
+            MoveCenter();
+            if (transform.position == centerPos)
+            {
+                AttackAOE();
+                if (phaseOneAdds == false)
+                    {
+                    phaseOneAdds = true;
+                    StartCoroutine(FindObjectOfType<AddSpawner>().SpawnAllWaves());
+                    Debug.Log("Add spawner function called");
+                    }
+            }
+
+        }
+        else
+        Move();*/
     }
 
     private void Move()
@@ -61,6 +94,12 @@ public class Boss : MonoBehaviour
         {
             var targetPosition = waypoints[waypointIndex].transform.position;
             var movementThisFrame = moveSpeed * Time.deltaTime;
+            phaseOneAddsTimer -= Time.deltaTime;
+            if (phaseOneAddsTimer <= 0)
+            {
+                StartCoroutine(startAddsScript.SpawnAllWaves());
+                phaseOneAddsTimer = phaseOneAddsDelay;
+            }
             transform.position = Vector2.MoveTowards
                 (transform.position, targetPosition, movementThisFrame);
 
@@ -75,7 +114,14 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private List<Transform> GetWaypoints()
+    private void MoveCenter()
+    {
+        var targetPosition = new Vector2(0, 0);
+        var movementThisFrame = moveSpeed * Time.deltaTime;
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
+    }
+
+    private List<Transform> GetWaypoints() //dodaj parameter za path
     {
         var bossWaypoints = new List<Transform>();
         foreach (Transform child in phaseOnePath.transform)
@@ -108,38 +154,41 @@ public class Boss : MonoBehaviour
         Destroy(gameObject);
     }
 
-    /*
-    private void CountDownAndShoot()
+
+    private void AttackAOE()
     {
-        shotCounter -= Time.deltaTime;
-        if (shotCounter <= 0)
+        AOETimer -= Time.deltaTime;
+        if (AOETimer <= 0)
         {
-            Fire();
-            shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+            Fire(AOEProjectile, AOEProjectileOneSpeedX, AOEProjectileOneSpeedY, AOEShootSound, AOEShootSoundVolume);
+            Fire(AOEProjectile, AOEProjectileTwoSpeedX, AOEProjectileTwoSpeedY, AOEShootSound, AOEShootSoundVolume);
+            Fire(AOEProjectile, AOEProjectileThreeSpeedX, AOEProjectileThreeSpeedY, AOEShootSound, AOEShootSoundVolume);
+            Fire(AOEProjectile, AOEProjectileFourSpeedX, AOEProjectileFourSpeedY, AOEShootSound, AOEShootSoundVolume);
+            Fire(AOEProjectile, -AOEProjectileOneSpeedX, -AOEProjectileOneSpeedY, AOEShootSound, AOEShootSoundVolume);
+            Fire(AOEProjectile, -AOEProjectileTwoSpeedX, -AOEProjectileTwoSpeedY, AOEShootSound, AOEShootSoundVolume);
+            Fire(AOEProjectile, -AOEProjectileThreeSpeedX, -AOEProjectileThreeSpeedY, AOEShootSound, AOEShootSoundVolume);
+            Fire(AOEProjectile, -AOEProjectileFourSpeedX, -AOEProjectileFourSpeedY, AOEShootSound, AOEShootSoundVolume);
+            AOETimer = AOEShotDelay;
         }
     }
 
-    private void Fire()
+
+
+
+
+    private void Fire(GameObject projectile, float speedX, float speedY, AudioClip shotSound, float shotSoundVolume)
     {
         GameObject laser = Instantiate(
-            firstProjectile,
+            projectile,
             transform.position,
             Quaternion.identity) as GameObject;
-        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeedX, -projectileSpeedY);
-        AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
-
-        if (projectiles > 1)
-        {
-            GameObject laser2 = Instantiate(
-                firstProjectile,
-                transform.position,
-                Quaternion.identity) as GameObject;
-            laser2.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile2SpeedX, -projectile2SpeedY);
-            AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position, shootSoundVolume);
-        }
+        laser.GetComponent<Rigidbody2D>().velocity = new Vector2(speedX, -speedY);
+        AudioSource.PlayClipAtPoint(shotSound, Camera.main.transform.position, shotSoundVolume);
     }
 
 
+    
+/*
     private void OnTriggerEnter2D(Collider2D other)
     {
 
