@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Boss
+    uniqueID: 322320677
+    locked: 0
   - name: Projectiles
     uniqueID: 3776483813
     locked: 0

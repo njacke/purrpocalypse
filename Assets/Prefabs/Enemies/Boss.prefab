@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 322320677
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 05d11962abe44c04bb10e3b107dea0b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -97,21 +97,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7581f8c9612fe3740a2ce7f7965503f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 3
+  health: 3000
+  phaseTwoHP: 2000
+  phaseThreeHP: 1000
+  prephaseTimer: 2
   phaseOnePath: {fileID: 6844963078480526005, guid: e2c62f45f3e80fc4da13aad6dd9e9897, type: 3}
-  moveSpeed: 2
-  health: 900
+  transitionOneTimer: 5
+  phaseTwoPath: {fileID: 6844963078480526005, guid: d8e5135e5207c4944a84b93ee99d49bd, type: 3}
+  waypointWaitTime: 2
+  transitionTwoTimer: 5
+  phaseThreePath: {fileID: 6844963078480526005, guid: b8d5e11ac999844438df446649498e87, type: 3}
+  phaseThreeAddsDelay: 2
+  BombProjectile: {fileID: 7049940137874867403, guid: 1f65ea90a06df1c498b23c0862be4b64, type: 3}
+  BombShotDelay: 1
+  BombProjectileOneSpeedY: 3
+  BombProjectileOneSpeedX: 0
+  BombShootSoundVolume: 0.5
+  BombShootSound: {fileID: 8300000, guid: 0cc8cfc69e4ddff4a9d745c106d71a42, type: 3}
   AOEProjectile: {fileID: 7049940137874867403, guid: a9925bc95f36cfe4ca895a02f2b7ed43, type: 3}
-  AOEShotDelay: 0.5
+  AOEShotDelay: 0.3
   AOEProjectileOneSpeedY: 0
-  AOEProjectileOneSpeedX: 5
-  AOEProjectileTwoSpeedY: 2.5
-  AOEProjectileTwoSpeedX: 2.5
-  AOEProjectileThreeSpeedY: 5
+  AOEProjectileOneSpeedX: 8
+  AOEProjectileTwoSpeedY: 8
+  AOEProjectileTwoSpeedX: 6
+  AOEProjectileThreeSpeedY: 8
   AOEProjectileThreeSpeedX: 0
-  AOEProjectileFourSpeedY: 2.5
-  AOEProjectileFourSpeedX: -2.5
+  AOEProjectileFourSpeedY: 8
+  AOEProjectileFourSpeedX: -6
   AOEShootSoundVolume: 0.5
   AOEShootSound: {fileID: 8300000, guid: 4befaffab5238884b80bfd57221ceab2, type: 3}
+  ConeProjectile: {fileID: 7049940137874867403, guid: a9925bc95f36cfe4ca895a02f2b7ed43, type: 3}
+  ConeShotDelay: 1
+  coneOffsetY: 2
+  coneOffsetX: 0.25
+  ConeProjectileOneSpeedY: 7
+  ConeProjectileOneSpeedX: 1
+  ConeProjectileTwoSpeedY: 7
+  ConeProjectileTwoSpeedX: 0.5
+  ConeShootSoundVolume: 0.5
+  ConeShootSound: {fileID: 8300000, guid: 0cc8cfc69e4ddff4a9d745c106d71a42, type: 3}
 --- !u!50 &-2868385784921409281
 Rigidbody2D:
   serializedVersion: 4

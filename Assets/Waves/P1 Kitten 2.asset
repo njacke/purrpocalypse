@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: P1 Kitten 2
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4861853302944693312, guid: 201d060374d79f04daef15aa83abaa37, type: 3}
-  pathPrefab: {fileID: 7256183006057886305, guid: 44fde792b14f0434e84c2bd897aaa3e3, type: 3}
+  pathPrefab: {fileID: 7256183006057886305, guid: 082dee0bc3cddd74185c80d7b40e1109, type: 3}
   timeBetweenSpawns: 0.5
   spawnRandomFactor: 0
   numberOfEnemies: 3
