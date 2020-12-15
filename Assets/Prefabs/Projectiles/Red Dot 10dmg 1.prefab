@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6880282719528260367
+--- !u!1 &7049940137874867403
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6880282719528260369}
-  - component: {fileID: 6880282719528260368}
-  - component: {fileID: -3667254333297916603}
-  - component: {fileID: 6880282719528260370}
-  m_Layer: 8
-  m_Name: Player
-  m_TagString: Player
+  - component: {fileID: 5251745328685093830}
+  - component: {fileID: 9064289038583966517}
+  - component: {fileID: 6563120812243679543}
+  - component: {fileID: -4523507488470110904}
+  - component: {fileID: -4909763733350625288}
+  m_Layer: 11
+  m_Name: Red Dot 20dmg 1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6880282719528260369
+--- !u!4 &5251745328685093830
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6880282719528260367}
+  m_GameObject: {fileID: 7049940137874867403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6880282719528260368
+--- !u!212 &9064289038583966517
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6880282719528260367}
+  m_GameObject: {fileID: 7049940137874867403}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -70,57 +71,67 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -518483483
+  m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9e968d4b75335a943b45c70495367cf4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c02213fe84d7e8f41a340cbbad98a798, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.99, y: 0.75}
+  m_Size: {x: 0.13, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &-3667254333297916603
-CircleCollider2D:
+--- !u!50 &6563120812243679543
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6880282719528260367}
-  m_Enabled: 1
-  m_Density: 1
+  m_GameObject: {fileID: 7049940137874867403}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.48
---- !u!114 &6880282719528260370
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-4523507488470110904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6880282719528260367}
+  m_GameObject: {fileID: 7049940137874867403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab8b38c59be3174a9170105935066d3, type: 3}
+  m_Script: {fileID: 11500000, guid: eed10d1c8f320374b8e5ebab40e4a818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  padding: 0.5
-  health: 1000
-  laserPrefab: {fileID: 7049940137874867403, guid: 91f268de9a2cad4439052f5a1ecfdb93, type: 3}
-  projectileSpeed: 20
-  projectileFiringPeriod: 0.1
-  deathVFX: {fileID: 1333086443587916795, guid: 8dc5c2662a8479349ba81fcdb1cc5570, type: 3}
-  durationOfExplosion: 1
-  deathSound: {fileID: 8300000, guid: cebbcacf1de18154e8c0b93ded077618, type: 3}
-  deathSoundVolume: 0.5
-  shootSound: {fileID: 8300000, guid: 327b6f4cb982cbf409ba749f4ed7afa3, type: 3}
-  shootSoundVolume: 0.05
+  damage: 10
+--- !u!58 &-4909763733350625288
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7049940137874867403}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.075

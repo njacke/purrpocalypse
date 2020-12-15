@@ -126,13 +126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7acaee577f6a364297fb9d134b1af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
   scoreVaule: 100
   shotCounter: 0
-  minTimeBetweenShots: 1.9
-  maxTimeBetweenShots: 2.1
+  minTimeBetweenShots: 1.4
+  maxTimeBetweenShots: 1.6
   projectiles: 1
-  firstProjectile: {fileID: 7049940137874867403, guid: b75b43e3a8a9cf743bbaabeabbb42532, type: 3}
+  firstProjectile: {fileID: 7049940137874867403, guid: 8ba64b6360556d54494749fa55aae8d7, type: 3}
   projectileSpeedY: 5
   projectileSpeedX: 0
   secondProjectile: {fileID: 0}

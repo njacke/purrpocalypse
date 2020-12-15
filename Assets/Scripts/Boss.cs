@@ -22,16 +22,6 @@ public class Boss : MonoBehaviour
     [SerializeField] float phaseThreeAddsDelay = 3f;
     float phaseThreeAddsTimer;
 
-    // Attack Bomb Config
-    [Header("Attack Bomb")]
-    [SerializeField] GameObject BombProjectile;
-    [SerializeField] float BombShotDelay = 1f;
-    float BombTimer;
-    [SerializeField] float BombProjectileOneSpeedY = 5f;
-    [SerializeField] float BombProjectileOneSpeedX = 0f;
-    [SerializeField] [Range(0, 1)] float BombShootSoundVolume = 0.5f;
-    [SerializeField] AudioClip BombShootSound;
-
 
     // Attack AOE config
     [Header("Attack AOE")]
@@ -49,6 +39,26 @@ public class Boss : MonoBehaviour
     [SerializeField] [Range(0, 1)] float AOEShootSoundVolume = 0.5f;
     [SerializeField] AudioClip AOEShootSound;
 
+    // Attack Bomb Config
+    [Header("Attack Bomb")]
+    [SerializeField] GameObject BombProjectile;
+    [SerializeField] float BombShotDelay = 1f;
+    float BombTimer;
+    [SerializeField] float BombProjectileOneSpeedY = 5f;
+    [SerializeField] float BombProjectileOneSpeedX = 0f;
+    [SerializeField] [Range(0, 1)] float BombShootSoundVolume = 0.5f;
+    [SerializeField] AudioClip BombShootSound;
+
+    // Attack Bomb Config
+    [Header("Attack Bomb Two")]
+    [SerializeField] GameObject BombProjectileTwo;
+    [SerializeField] float BombShotDelayTwo = 1f;
+    float BombTimerTwo;
+    [SerializeField] float BombProjectileOneSpeedYTwo = 5f;
+    [SerializeField] float BombProjectileOneSpeedXTwo = 0f;
+    [SerializeField] [Range(0, 1)] float BombShootSoundVolumeTwo = 0.5f;
+    [SerializeField] AudioClip BombShootSoundTwo;
+
 
     // Attack Cone config
     [Header("Attack Cone")]
@@ -63,6 +73,18 @@ public class Boss : MonoBehaviour
     [SerializeField] float ConeProjectileTwoSpeedX = 0f;
     [SerializeField] [Range(0, 1)] float ConeShootSoundVolume = 0.5f;
     [SerializeField] AudioClip ConeShootSound;
+
+    // Attack Cone config
+    [Header("Attack Cone Two")]
+    [SerializeField] GameObject ConeProjectileTwo;
+    [SerializeField] float ConeShotDelayTwo = 1f;
+    float ConeTimerTwo;
+    [SerializeField] float ConeProjectileOneSpeedYTwo = 5f;
+    [SerializeField] float ConeProjectileOneSpeedXTwo = 0f;
+    [SerializeField] float ConeProjectileTwoSpeedYTwo = 5f;
+    [SerializeField] float ConeProjectileTwoSpeedXTwo = 0f;
+    [SerializeField] [Range(0, 1)] float ConeShootSoundVolumeTwo = 0.5f;
+    [SerializeField] AudioClip ConeShootSoundTwo;
 
 
     // bools
@@ -186,7 +208,8 @@ public class Boss : MonoBehaviour
         if (phaseThree == true)
         {
             MovePhaseThree();
-            AttackCone();
+            AttackConeTwo();
+            AttackBombTwo();
         }
     }
 
@@ -335,15 +358,6 @@ public class Boss : MonoBehaviour
     }
 
 
-    private void AttackBomb()
-    {
-        BombTimer -= Time.deltaTime;
-        if (BombTimer <= 0)
-        {
-            Fire(BombProjectile, BombProjectileOneSpeedX, BombProjectileOneSpeedY, BombShootSound, BombShootSoundVolume, bossPos);
-            BombTimer = BombShotDelay;
-        }
-    }
     private void AttackAOE()
     {
         AOETimer -= Time.deltaTime;
@@ -361,6 +375,27 @@ public class Boss : MonoBehaviour
         }
     }
 
+    private void AttackBomb()
+    {
+        BombTimer -= Time.deltaTime;
+        if (BombTimer <= 0)
+        {
+            Fire(BombProjectile, BombProjectileOneSpeedX, BombProjectileOneSpeedY, BombShootSound, BombShootSoundVolume, bossPos);
+            BombTimer = BombShotDelay;
+        }
+    }
+
+    private void AttackBombTwo()
+    {
+        BombTimerTwo -= Time.deltaTime;
+        if (BombTimerTwo <= 0)
+        {
+            Fire(BombProjectileTwo, BombProjectileOneSpeedXTwo, BombProjectileOneSpeedYTwo, BombShootSoundTwo, BombShootSoundVolumeTwo, bossPos);
+            BombTimerTwo = BombShotDelayTwo;
+        }
+    }
+
+
     private void AttackCone()
     {
         ConeTimer -= Time.deltaTime;
@@ -371,6 +406,19 @@ public class Boss : MonoBehaviour
             Fire(ConeProjectile, -ConeProjectileOneSpeedX, ConeProjectileOneSpeedY, ConeShootSound, ConeShootSoundVolume, conePosTwo);
             Fire(ConeProjectile, -ConeProjectileTwoSpeedX, ConeProjectileTwoSpeedY, ConeShootSound, ConeShootSoundVolume, conePosTwo);
             ConeTimer = ConeShotDelay;
+        }
+    }
+
+    private void AttackConeTwo()
+    {
+        ConeTimerTwo -= Time.deltaTime;
+        if (ConeTimerTwo <= 0)
+        {
+            Fire(ConeProjectileTwo, ConeProjectileOneSpeedXTwo, ConeProjectileOneSpeedYTwo, ConeShootSoundTwo, ConeShootSoundVolumeTwo, conePosOne);
+            Fire(ConeProjectileTwo, ConeProjectileTwoSpeedXTwo, ConeProjectileTwoSpeedYTwo, ConeShootSoundTwo, ConeShootSoundVolumeTwo, conePosOne);
+            Fire(ConeProjectileTwo, -ConeProjectileOneSpeedXTwo, ConeProjectileOneSpeedYTwo, ConeShootSoundTwo, ConeShootSoundVolumeTwo, conePosTwo);
+            Fire(ConeProjectileTwo, -ConeProjectileTwoSpeedXTwo, ConeProjectileTwoSpeedYTwo, ConeShootSoundTwo, ConeShootSoundVolumeTwo, conePosTwo);
+            ConeTimerTwo = ConeShotDelayTwo;
         }
     }
 

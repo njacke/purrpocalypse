@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee8e04da8551b54785c9f8ab77565ea, type: 3}
-  m_Name: Cat RLS
+  m_Name: Siamese DLC
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4861853302944693312, guid: 4a4a31de450b3b3408797f92aac85dec, type: 3}
-  pathPrefab: {fileID: 6844963078480526005, guid: 62386a30eac8f604aabe7e3434539bbb, type: 3}
+  enemyPrefab: {fileID: 4861853302944693312, guid: b839d9c1e76fe1541b154239474c0221, type: 3}
+  pathPrefab: {fileID: 6844963078480526005, guid: 8fae5e9c11a41f74abc198a7533727e0, type: 3}
   timeBetweenSpawns: 1
   spawnRandomFactor: 0.1
-  numberOfEnemies: 5
-  moveSpeed: 4
+  numberOfEnemies: 3
+  moveSpeed: 3.5
