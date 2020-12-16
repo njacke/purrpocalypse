@@ -72,15 +72,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1025041553
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 259db2850e4979c4e93ac685310babce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18a40e831e7185349b125e230ee4696d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.59}
+  m_Size: {x: 0.85333335, y: 1.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -126,13 +126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7acaee577f6a364297fb9d134b1af09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
+  health: 1000
   scoreVaule: 1000
   shotCounter: 0
   minTimeBetweenShots: 10
   maxTimeBetweenShots: 10
   projectiles: 1
-  firstProjectile: {fileID: 7049940137874867403, guid: 36cb0ea34e447c54597b5431a2963c1e, type: 3}
+  firstProjectile: {fileID: 7049940137874867403, guid: bce8f6f11a266554399fb429962a3c91, type: 3}
   projectileSpeedY: 0
   projectileSpeedX: 0
   secondProjectile: {fileID: 0}

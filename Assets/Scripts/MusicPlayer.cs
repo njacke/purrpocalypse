@@ -7,6 +7,8 @@ public class MusicPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        Destroy(GameObject.Find("Music Player Combat"));
+        Destroy(GameObject.Find("Music Player Win"));
         SetUpSingleton();
     }
 
@@ -16,6 +18,7 @@ public class MusicPlayer : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         else
         {
             DontDestroyOnLoad(gameObject);

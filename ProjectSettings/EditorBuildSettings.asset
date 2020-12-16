@@ -6,12 +6,42 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Story Menu.unity
+    path: Assets/Scenes/Menus/Start Menu.unity
+    guid: 32f975173ddf5ca46af4ab515bdf38de
+  - enabled: 1
+    path: Assets/Scenes/Menus/Story Menu 1.unity
     guid: 9fa6fd59b8eeb33439bddb2978380b2b
+  - enabled: 1
+    path: Assets/Scenes/Menus/Controls Menu.unity
+    guid: 4ca4963622f56c6479084f9baed61163
   - enabled: 1
     path: Assets/Scenes/Level One.unity
     guid: ddc87cf485454aa40b054b557c3f5521
   - enabled: 1
-    path: Assets/Scenes/Game Over.unity
+    path: Assets/Scenes/Menus/Story Menu 2.unity
+    guid: 40c408e6dc3156545a51c21f37e9d086
+  - enabled: 1
+    path: Assets/Scenes/Boss.unity
+    guid: 1348fb7b38022a04c80df2a28fd244c8
+  - enabled: 1
+    path: Assets/Scenes/Menus/Story Menu 3.unity
+    guid: 49b5f630d9dba8b44b4b292b5a169d23
+  - enabled: 1
+    path: Assets/Scenes/Menus/Credits Menu.unity
+    guid: ad6a86813eaf67042bbe2cf51b350f6e
+  - enabled: 1
+    path: Assets/Scenes/Menus/Game Over Story.unity
+    guid: dabb7b9f38662c9429e162186d7e86ca
+  - enabled: 1
+    path: Assets/Scenes/Menus/Game Over Boss.unity
+    guid: c65c842a3e9a19d42a02b0f1e38c6976
+  - enabled: 1
+    path: Assets/Scenes/Menus/Game Over Arena.unity
     guid: 338534e06e9832b4dbd4782d119e0634
+  - enabled: 1
+    path: Assets/Scenes/Menus/Instructions Menu.unity
+    guid: f3ccb2f6db6dc7d4a8e675088f7bf24a
+  - enabled: 1
+    path: Assets/Scenes/Arena.unity
+    guid: dc01caaa7dedb774ea7c2f26c3963813
   m_configObjects: {}

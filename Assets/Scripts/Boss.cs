@@ -354,6 +354,8 @@ public class Boss : MonoBehaviour
 
     private void Die()
     {
+        FindObjectOfType<LevelLoading>().LoadVictory();
+
         Destroy(gameObject);
     }
 

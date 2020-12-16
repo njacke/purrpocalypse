@@ -7,8 +7,10 @@ public class Player : MonoBehaviour
     //config parameters
     [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
-    [SerializeField] float padding = 1f;
     [SerializeField] int health = 200;
+    [SerializeField] float padding = 1f;
+    [SerializeField] float paddingTop = 1f;
+
 
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
@@ -25,6 +27,8 @@ public class Player : MonoBehaviour
 
     Coroutine firingCoroutine;
 
+    LevelLoading leveLoading;
+
     float xMin;
     float xMax;
     float yMin;
@@ -34,6 +38,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundries();
+        leveLoading = FindObjectOfType<LevelLoading>();
     }
 
     // Update is called once per frame
@@ -72,11 +77,29 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        FindObjectOfType<LevelLoading>().LoadGameOver();
+        LoadGameOver();
+
         Destroy(gameObject);
         GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, durationOfExplosion);
-        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);        
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+    }
+
+    private void LoadGameOver()
+    {
+        string currentScene = leveLoading.GetCurrentScene();
+        if (currentScene == "Level One")
+        {
+            leveLoading.LoadGameOverStory();
+        }
+        if (currentScene == "Boss")
+        {
+            leveLoading.LoadGameOverBoss();
+        }
+        if (currentScene == "Arena")
+        {
+            leveLoading.LoadGameOverArena();
+        }
     }
 
     public int GetHealth()
@@ -130,6 +153,6 @@ public class Player : MonoBehaviour
         xMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + padding;
         xMax = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - padding;
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + padding;
-        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding;
+        yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - paddingTop;
     }
 }
