@@ -533,6 +533,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1229527425413546435, guid: 1fab9f7cd763f3c4780dbcd65e0dd293, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextSceneBark
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229527425413546435, guid: 1fab9f7cd763f3c4780dbcd65e0dd293, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: LevelLoading, Assembly-CSharp
       objectReference: {fileID: 0}

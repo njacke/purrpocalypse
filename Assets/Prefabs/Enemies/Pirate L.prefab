@@ -141,9 +141,9 @@ MonoBehaviour:
   deathVFX: {fileID: 1333086443587916795, guid: 8dc5c2662a8479349ba81fcdb1cc5570, type: 3}
   durationOfExplosion: 1
   deathSound: {fileID: 8300000, guid: cebbcacf1de18154e8c0b93ded077618, type: 3}
-  deathSoundVolume: 0.2
-  shootSound: {fileID: 8300000, guid: f2797089454ec0944b76fa455fc26aef, type: 3}
-  shootSoundVolume: 0.2
+  deathSoundVolume: 0.4
+  shootSound: {fileID: 8300000, guid: 0cc8cfc69e4ddff4a9d745c106d71a42, type: 3}
+  shootSoundVolume: 0.25
 --- !u!50 &1310662264686832901
 Rigidbody2D:
   serializedVersion: 4

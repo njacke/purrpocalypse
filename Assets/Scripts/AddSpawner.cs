@@ -32,12 +32,16 @@ public class AddSpawner : MonoBehaviour
     {
         for (int enemyCount = 0; enemyCount < waveConfig.GetNumberOfEnemies(); enemyCount++)
         {
-            var newEnemy = Instantiate(
-            waveConfig.GetEnemyPrefab(),
-            GameObject.Find("Boss").transform.position,
-            Quaternion.identity);
-            newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
-            yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
+            if (FindObjectOfType<Boss>().BossAlive() == true)
+            {
+                var newEnemy = Instantiate(
+                waveConfig.GetEnemyPrefab(),
+                GameObject.Find("Boss").transform.position,
+                Quaternion.identity);
+                newEnemy.GetComponent<EnemyPathing>().SetWaveConfig(waveConfig);
+                yield return new WaitForSeconds(waveConfig.GetTimeBetweenSpawns());
+            }
+
         }
     }
 

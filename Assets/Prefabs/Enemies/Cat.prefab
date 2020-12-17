@@ -129,8 +129,8 @@ MonoBehaviour:
   health: 30
   scoreVaule: 200
   shotCounter: 0
-  minTimeBetweenShots: 1.2
-  maxTimeBetweenShots: 1.3
+  minTimeBetweenShots: 1.1
+  maxTimeBetweenShots: 1.4
   projectiles: 1
   firstProjectile: {fileID: 7049940137874867403, guid: 8ba64b6360556d54494749fa55aae8d7, type: 3}
   projectileSpeedY: 7
@@ -141,8 +141,8 @@ MonoBehaviour:
   deathVFX: {fileID: 1333086443587916795, guid: 8dc5c2662a8479349ba81fcdb1cc5570, type: 3}
   durationOfExplosion: 1
   deathSound: {fileID: 8300000, guid: cebbcacf1de18154e8c0b93ded077618, type: 3}
-  deathSoundVolume: 0.2
-  shootSound: {fileID: 8300000, guid: f2797089454ec0944b76fa455fc26aef, type: 3}
+  deathSoundVolume: 0.4
+  shootSound: {fileID: 8300000, guid: 172823beae47a3849a2f29cfcd946de6, type: 3}
   shootSoundVolume: 0.2
 --- !u!50 &1310662264686832901
 Rigidbody2D:

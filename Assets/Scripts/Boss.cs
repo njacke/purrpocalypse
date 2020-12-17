@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
     [Header("Boss")]
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float health = 100;
+    float startHealth;
 
     // Phases
     [Header("Phases")]
@@ -19,8 +20,22 @@ public class Boss : MonoBehaviour
     [SerializeField] float waypointWaitTime = 2f;
     [SerializeField] float transitionTwoTimer = 5f;
     [SerializeField] GameObject phaseThreePath;
+    [SerializeField] float phaseThreeAddsStart = 1f;
     [SerializeField] float phaseThreeAddsDelay = 3f;
     float phaseThreeAddsTimer;
+
+    // VFX and sound effects
+    [Header("Effects")]
+    [SerializeField] AudioClip battleStartSound;
+    [SerializeField] [Range(0, 1)] float battleStartSoundVolume;
+    [SerializeField] AudioClip catSpawnSound;
+    [SerializeField] [Range(0, 1)] float catSpawnSoundVolume;
+    [SerializeField] GameObject deathVFX;
+    [SerializeField] float durationOfExplosion = 1f;
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] [Range(0, 1)] float deathSoundVolume;
+    [SerializeField] float destroyDelay = 3f;
+
 
 
     // Attack AOE config
@@ -36,6 +51,16 @@ public class Boss : MonoBehaviour
     [SerializeField] float AOEProjectileThreeSpeedX = 0f;
     [SerializeField] float AOEProjectileFourSpeedY = 5f;
     [SerializeField] float AOEProjectileFourSpeedX = 0f;
+    [SerializeField] float AOEProjectileFiveSpeedY = 5f;
+    [SerializeField] float AOEProjectileFiveSpeedX = 0f;
+    [SerializeField] float AOEProjectileSixSpeedY = 5f;
+    [SerializeField] float AOEProjectileSixSpeedX = 0f;
+    [SerializeField] float AOEProjectileSevenSpeedY = 5f;
+    [SerializeField] float AOEProjectileSevenSpeedX = 0f;
+    [SerializeField] float AOEProjectileEightSpeedY = 5f;
+    [SerializeField] float AOEProjectileEightSpeedX = 0f;
+    [SerializeField] float AOEProjectileNineSpeedY = 5f;
+    [SerializeField] float AOEProjectileNineSpeedX = 0f;
     [SerializeField] [Range(0, 1)] float AOEShootSoundVolume = 0.5f;
     [SerializeField] AudioClip AOEShootSound;
 
@@ -48,16 +73,6 @@ public class Boss : MonoBehaviour
     [SerializeField] float BombProjectileOneSpeedX = 0f;
     [SerializeField] [Range(0, 1)] float BombShootSoundVolume = 0.5f;
     [SerializeField] AudioClip BombShootSound;
-
-    // Attack Bomb Config
-    [Header("Attack Bomb Two")]
-    [SerializeField] GameObject BombProjectileTwo;
-    [SerializeField] float BombShotDelayTwo = 1f;
-    float BombTimerTwo;
-    [SerializeField] float BombProjectileOneSpeedYTwo = 5f;
-    [SerializeField] float BombProjectileOneSpeedXTwo = 0f;
-    [SerializeField] [Range(0, 1)] float BombShootSoundVolumeTwo = 0.5f;
-    [SerializeField] AudioClip BombShootSoundTwo;
 
 
     // Attack Cone config
@@ -74,28 +89,21 @@ public class Boss : MonoBehaviour
     [SerializeField] [Range(0, 1)] float ConeShootSoundVolume = 0.5f;
     [SerializeField] AudioClip ConeShootSound;
 
-    // Attack Cone config
-    [Header("Attack Cone Two")]
-    [SerializeField] GameObject ConeProjectileTwo;
-    [SerializeField] float ConeShotDelayTwo = 1f;
-    float ConeTimerTwo;
-    [SerializeField] float ConeProjectileOneSpeedYTwo = 5f;
-    [SerializeField] float ConeProjectileOneSpeedXTwo = 0f;
-    [SerializeField] float ConeProjectileTwoSpeedYTwo = 5f;
-    [SerializeField] float ConeProjectileTwoSpeedXTwo = 0f;
-    [SerializeField] [Range(0, 1)] float ConeShootSoundVolumeTwo = 0.5f;
-    [SerializeField] AudioClip ConeShootSoundTwo;
-
 
     // bools
-    bool fightStarted = true;
+    bool prePhase = true;
     bool phaseOne = false;
     bool phaseTwo = false;
     bool phaseThree = false;
     bool phaseOneTransition = false;
+    bool phaseOneTransitionCalled = false;
     bool phaseTwoTransition = false;
-    bool transitionTwoAddsSpawned = false;
+    bool phaseTwoTransitionCalled = false;
     bool spawnWaypointWave = true;
+    bool battleStartSoundPlayed = false;
+    bool bossAlive = true;
+    bool destroyTriggered = false;
+
 
 
     //positions
@@ -107,7 +115,6 @@ public class Boss : MonoBehaviour
 
     //AddSpawners
     AddSpawner phaseTwoAdds;
-    AddSpawner transitionTwoAdds;
     AddSpawner phaseThreeAdds;
 
     //phase paths
@@ -131,15 +138,15 @@ public class Boss : MonoBehaviour
     void Start()
     {
         phaseTwoAdds = (AddSpawner)GameObject.Find("Phase Two Adds").GetComponent(typeof(AddSpawner));
-        transitionTwoAdds = (AddSpawner)GameObject.Find("Transition Two Adds").GetComponent(typeof(AddSpawner));
         phaseThreeAdds = (AddSpawner)GameObject.Find("Phase Three Adds").GetComponent(typeof(AddSpawner));
 
         waypointsPhaseOne = GetWaypoints(phaseOnePath);
         waypointsPhaseTwo = GetWaypoints(phaseTwoPath);
         waypointsPhaseThree = GetWaypoints(phaseThreePath);
 
-        phaseThreeAddsTimer = phaseThreeAddsDelay;
+        phaseThreeAddsTimer = phaseThreeAddsStart;
         transform.position = startPos;
+        startHealth = health;
     }
 
 
@@ -150,9 +157,15 @@ public class Boss : MonoBehaviour
         conePosOne = GetConePosOne();
         conePosTwo = GetConePosTwo();
 
-        if (fightStarted == true)
+        if (prePhase == true)
         {
             StartCoroutine(PhaseOneStart());
+            if (battleStartSoundPlayed == false)
+            {
+                
+                AudioSource.PlayClipAtPoint(battleStartSound, Camera.main.transform.position, battleStartSoundVolume);
+                battleStartSoundPlayed = true;
+            }
         }
 
         if (phaseOne == true)
@@ -162,10 +175,14 @@ public class Boss : MonoBehaviour
             AttackBomb();
         }
 
-        if (health == phaseTwoHP)
+        if (health <= phaseTwoHP)
         {
-            phaseOneTransition = true;
-            phaseOne = false;
+            if (phaseOneTransitionCalled == false)
+            {
+                phaseOne = false;
+                phaseOneTransition = true;
+                phaseOneTransitionCalled = true;
+            }
         }
 
         if (phaseOneTransition == true)
@@ -173,8 +190,8 @@ public class Boss : MonoBehaviour
             MoveCenter();
             if (transform.position == centerPos)
             {
-                StartCoroutine(PhaseTwoStart());
                 AttackAOE();
+                StartCoroutine(PhaseTwoStart());
             }
         }
 
@@ -183,10 +200,14 @@ public class Boss : MonoBehaviour
             MovePhaseTwo();
         }
 
-        if (health == phaseThreeHP)
+        if (health <= phaseThreeHP)
         {
-            phaseTwo = false;
-            phaseTwoTransition = true;
+            if (phaseTwoTransitionCalled == false)
+            {
+                phaseTwo = false;
+                phaseTwoTransition = true;
+                phaseTwoTransitionCalled = true;
+            }
         }
 
         if (phaseTwoTransition == true)
@@ -194,29 +215,25 @@ public class Boss : MonoBehaviour
             MoveCenter();
             if (transform.position == centerPos)
             {
-                StartCoroutine(PhaseThreeStart());
                 AttackAOE();
-                if (transitionTwoAddsSpawned == false)
-                {
-                    StartCoroutine(transitionTwoAdds.SpawnAllWaves());
-                    transitionTwoAddsSpawned = true;
-                }
+                StartCoroutine(PhaseThreeStart());
             }
                 
         }
 
-        if (phaseThree == true)
+        if ((phaseThree == true) && (bossAlive == true))
         {
             MovePhaseThree();
-            AttackConeTwo();
-            AttackBombTwo();
+            AttackCone();
+            AttackBomb();
         }
     }
 
     private IEnumerator PhaseOneStart()
     {
+        prePhase = false;
         yield return new WaitForSeconds(prephaseTimer);
-        fightStarted = false;
+        health = startHealth;
         phaseOne = true;
     }
 
@@ -269,6 +286,7 @@ public class Boss : MonoBehaviour
                 if (spawnWaypointWave == true)
                 {
                     StartCoroutine(WaitOnWaypointAndSpawn());
+                    AudioSource.PlayClipAtPoint(catSpawnSound, Camera.main.transform.position, catSpawnSoundVolume);
                     spawnWaypointWave = false;
                 }
             }
@@ -296,10 +314,12 @@ public class Boss : MonoBehaviour
             transform.position = Vector2.MoveTowards
                 (transform.position, targetPosition, movementThisFrame);
             phaseThreeAddsTimer -= Time.deltaTime;
-            if (phaseThreeAddsTimer <= 0)
             {
-                StartCoroutine(phaseThreeAdds.SpawnAllWaves());
-                phaseThreeAddsTimer = phaseThreeAddsDelay;
+                if (phaseThreeAddsTimer <= 0)
+                {
+                    StartCoroutine(phaseThreeAdds.SpawnAllWaves());
+                    phaseThreeAddsTimer = phaseThreeAddsDelay;
+                }
             }
             if (transform.position == targetPosition)
             {
@@ -354,8 +374,25 @@ public class Boss : MonoBehaviour
 
     private void Die()
     {
-        FindObjectOfType<LevelLoading>().LoadVictory();
+        phaseThree = false;
+        bossAlive = false;
 
+        if (destroyTriggered == false)
+        {
+            StartCoroutine(DestroyDelay());
+            destroyTriggered = true;
+        }
+
+        GameObject explosion = Instantiate(deathVFX, transform.position , transform.rotation);
+        Destroy(explosion, durationOfExplosion);
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+
+        FindObjectOfType<LevelLoading>().LoadVictory();
+    }
+
+    private IEnumerator DestroyDelay()
+    {
+        yield return  new WaitForSeconds(destroyDelay);
         Destroy(gameObject);
     }
 
@@ -366,13 +403,46 @@ public class Boss : MonoBehaviour
         if (AOETimer <= 0)
         {
             Fire(AOEProjectile, AOEProjectileOneSpeedX, AOEProjectileOneSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
-            Fire(AOEProjectile, AOEProjectileTwoSpeedX, AOEProjectileTwoSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
-            Fire(AOEProjectile, AOEProjectileThreeSpeedX, AOEProjectileThreeSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
-            Fire(AOEProjectile, AOEProjectileFourSpeedX, AOEProjectileFourSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
             Fire(AOEProjectile, -AOEProjectileOneSpeedX, -AOEProjectileOneSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, AOEProjectileTwoSpeedX, AOEProjectileTwoSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
             Fire(AOEProjectile, -AOEProjectileTwoSpeedX, -AOEProjectileTwoSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+
+            Fire(AOEProjectile, AOEProjectileThreeSpeedX, AOEProjectileThreeSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
             Fire(AOEProjectile, -AOEProjectileThreeSpeedX, -AOEProjectileThreeSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, AOEProjectileThreeSpeedX, -AOEProjectileThreeSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileThreeSpeedX, AOEProjectileThreeSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+
             Fire(AOEProjectile, -AOEProjectileFourSpeedX, -AOEProjectileFourSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, AOEProjectileFourSpeedX, AOEProjectileFourSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, AOEProjectileFourSpeedX, -AOEProjectileFourSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileFourSpeedX, AOEProjectileFourSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+
+            Fire(AOEProjectile, AOEProjectileFiveSpeedX, AOEProjectileFiveSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileFiveSpeedX, -AOEProjectileFiveSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, AOEProjectileFiveSpeedX, -AOEProjectileFiveSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileFiveSpeedX, AOEProjectileFiveSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+
+
+            Fire(AOEProjectile, AOEProjectileSixSpeedX, AOEProjectileSixSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileSixSpeedX, -AOEProjectileSixSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, AOEProjectileSixSpeedX, -AOEProjectileSixSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileSixSpeedX, AOEProjectileSixSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+
+            Fire(AOEProjectile, AOEProjectileSevenSpeedX, AOEProjectileSevenSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileSevenSpeedX, -AOEProjectileSevenSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, AOEProjectileSevenSpeedX, -AOEProjectileSevenSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileSevenSpeedX, AOEProjectileSevenSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+
+            Fire(AOEProjectile, AOEProjectileEightSpeedX, AOEProjectileEightSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileEightSpeedX, -AOEProjectileEightSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, AOEProjectileEightSpeedX, -AOEProjectileEightSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileEightSpeedX, AOEProjectileEightSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+
+            Fire(AOEProjectile, AOEProjectileNineSpeedX, AOEProjectileNineSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileNineSpeedX, -AOEProjectileNineSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, AOEProjectileNineSpeedX, -AOEProjectileNineSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+            Fire(AOEProjectile, -AOEProjectileNineSpeedX, AOEProjectileNineSpeedY, AOEShootSound, AOEShootSoundVolume, bossPos);
+
             AOETimer = AOEShotDelay;
         }
     }
@@ -387,17 +457,6 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private void AttackBombTwo()
-    {
-        BombTimerTwo -= Time.deltaTime;
-        if (BombTimerTwo <= 0)
-        {
-            Fire(BombProjectileTwo, BombProjectileOneSpeedXTwo, BombProjectileOneSpeedYTwo, BombShootSoundTwo, BombShootSoundVolumeTwo, bossPos);
-            BombTimerTwo = BombShotDelayTwo;
-        }
-    }
-
-
     private void AttackCone()
     {
         ConeTimer -= Time.deltaTime;
@@ -411,18 +470,6 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private void AttackConeTwo()
-    {
-        ConeTimerTwo -= Time.deltaTime;
-        if (ConeTimerTwo <= 0)
-        {
-            Fire(ConeProjectileTwo, ConeProjectileOneSpeedXTwo, ConeProjectileOneSpeedYTwo, ConeShootSoundTwo, ConeShootSoundVolumeTwo, conePosOne);
-            Fire(ConeProjectileTwo, ConeProjectileTwoSpeedXTwo, ConeProjectileTwoSpeedYTwo, ConeShootSoundTwo, ConeShootSoundVolumeTwo, conePosOne);
-            Fire(ConeProjectileTwo, -ConeProjectileOneSpeedXTwo, ConeProjectileOneSpeedYTwo, ConeShootSoundTwo, ConeShootSoundVolumeTwo, conePosTwo);
-            Fire(ConeProjectileTwo, -ConeProjectileTwoSpeedXTwo, ConeProjectileTwoSpeedYTwo, ConeShootSoundTwo, ConeShootSoundVolumeTwo, conePosTwo);
-            ConeTimerTwo = ConeShotDelayTwo;
-        }
-    }
 
     private Vector3 GetConePosOne()
     {
@@ -445,17 +492,9 @@ public class Boss : MonoBehaviour
         AudioSource.PlayClipAtPoint(shotSound, Camera.main.transform.position, shotSoundVolume);
     }
 
-
-    
-/*
-    private void Die()
+    public bool BossAlive()
     {
-        FindObjectOfType<GameSession>().AddToScore(scoreVaule);
-        Destroy(gameObject);
-        GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
-        Destroy(explosion, durationOfExplosion);
-        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+        return bossAlive;
     }
-    */
 }
 

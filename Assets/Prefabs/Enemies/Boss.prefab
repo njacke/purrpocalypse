@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 322320677
-  m_SortingLayer: -2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 876f67ef3e0e72d42817e285416042d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,43 +98,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  health: 1500
-  phaseTwoHP: 1000
-  phaseThreeHP: 500
-  prephaseTimer: 2
+  health: 4500
+  phaseTwoHP: 3000
+  phaseThreeHP: 1500
+  prephaseTimer: 1.5
   phaseOnePath: {fileID: 6844963078480526005, guid: e2c62f45f3e80fc4da13aad6dd9e9897, type: 3}
-  transitionOneTimer: 5
+  transitionOneTimer: 4
   phaseTwoPath: {fileID: 6844963078480526005, guid: d8e5135e5207c4944a84b93ee99d49bd, type: 3}
   waypointWaitTime: 2
-  transitionTwoTimer: 5
+  transitionTwoTimer: 4
   phaseThreePath: {fileID: 6844963078480526005, guid: b8d5e11ac999844438df446649498e87, type: 3}
-  phaseThreeAddsDelay: 2
-  AOEProjectile: {fileID: 7049940137874867403, guid: 9971de32b7c33bd47acad7dbd2cc87de, type: 3}
+  phaseThreeAddsStart: 2
+  phaseThreeAddsDelay: 5
+  battleStartSound: {fileID: 8300000, guid: 24dbb0e71d4288440baa8a4ab72001a5, type: 3}
+  battleStartSoundVolume: 1
+  catSpawnSound: {fileID: 8300000, guid: 9d9336b22b1e513489d982afc324cec0, type: 3}
+  catSpawnSoundVolume: 1
+  deathVFX: {fileID: 1333086443587916795, guid: da0b8e9437f5fe049b341a5a3b565278, type: 3}
+  durationOfExplosion: 3
+  deathSound: {fileID: 8300000, guid: 149da144d3916474799c7e424dec1b50, type: 3}
+  deathSoundVolume: 0.397
+  destroyDelay: 2
+  AOEProjectile: {fileID: 7049940137874867403, guid: a81297e7b074c03449a569b759acd959, type: 3}
   AOEShotDelay: 0.3
-  AOEProjectileOneSpeedY: 0
-  AOEProjectileOneSpeedX: 8
-  AOEProjectileTwoSpeedY: 8
-  AOEProjectileTwoSpeedX: 6
-  AOEProjectileThreeSpeedY: 8
-  AOEProjectileThreeSpeedX: 0
-  AOEProjectileFourSpeedY: 8
-  AOEProjectileFourSpeedX: -6
+  AOEProjectileOneSpeedY: 8
+  AOEProjectileOneSpeedX: 0
+  AOEProjectileTwoSpeedY: 0
+  AOEProjectileTwoSpeedX: 8
+  AOEProjectileThreeSpeedY: 4
+  AOEProjectileThreeSpeedX: 4
+  AOEProjectileFourSpeedY: 6
+  AOEProjectileFourSpeedX: 2
+  AOEProjectileFiveSpeedY: 2
+  AOEProjectileFiveSpeedX: 6
+  AOEProjectileSixSpeedY: 5
+  AOEProjectileSixSpeedX: 3
+  AOEProjectileSevenSpeedY: 3
+  AOEProjectileSevenSpeedX: 5
+  AOEProjectileEightSpeedY: 7
+  AOEProjectileEightSpeedX: 1
+  AOEProjectileNineSpeedY: 7
+  AOEProjectileNineSpeedX: 1
   AOEShootSoundVolume: 0.5
   AOEShootSound: {fileID: 8300000, guid: 4befaffab5238884b80bfd57221ceab2, type: 3}
   BombProjectile: {fileID: 7049940137874867403, guid: 1f65ea90a06df1c498b23c0862be4b64, type: 3}
-  BombShotDelay: 1
-  BombProjectileOneSpeedY: 3
+  BombShotDelay: 1.25
+  BombProjectileOneSpeedY: 5
   BombProjectileOneSpeedX: 0
   BombShootSoundVolume: 0.5
   BombShootSound: {fileID: 8300000, guid: 0cc8cfc69e4ddff4a9d745c106d71a42, type: 3}
-  BombProjectileTwo: {fileID: 7049940137874867403, guid: 1f65ea90a06df1c498b23c0862be4b64, type: 3}
-  BombShotDelayTwo: 1
-  BombProjectileOneSpeedYTwo: 5
-  BombProjectileOneSpeedXTwo: 0
-  BombShootSoundVolumeTwo: 0.5
-  BombShootSoundTwo: {fileID: 8300000, guid: 0cc8cfc69e4ddff4a9d745c106d71a42, type: 3}
-  ConeProjectile: {fileID: 7049940137874867403, guid: 9971de32b7c33bd47acad7dbd2cc87de, type: 3}
-  ConeShotDelay: 1
+  ConeProjectile: {fileID: 7049940137874867403, guid: 03da4a336dde73543b29cc59e62a5476, type: 3}
+  ConeShotDelay: 0.75
   coneOffsetY: 2.5
   coneOffsetX: 0.5
   ConeProjectileOneSpeedY: 7
@@ -143,14 +157,6 @@ MonoBehaviour:
   ConeProjectileTwoSpeedX: 0.5
   ConeShootSoundVolume: 0.5
   ConeShootSound: {fileID: 8300000, guid: 0cc8cfc69e4ddff4a9d745c106d71a42, type: 3}
-  ConeProjectileTwo: {fileID: 7049940137874867403, guid: bce8f6f11a266554399fb429962a3c91, type: 3}
-  ConeShotDelayTwo: 1
-  ConeProjectileOneSpeedYTwo: 7
-  ConeProjectileOneSpeedXTwo: 1
-  ConeProjectileTwoSpeedYTwo: 7
-  ConeProjectileTwoSpeedXTwo: 0.5
-  ConeShootSoundVolumeTwo: 0.5
-  ConeShootSoundTwo: {fileID: 8300000, guid: 07bd7bffa329b0949a65558c2fc8bf3e, type: 3}
 --- !u!50 &-2868385784921409281
 Rigidbody2D:
   serializedVersion: 4

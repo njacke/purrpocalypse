@@ -31,17 +31,30 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip shootSound;
     [SerializeField] [Range(0, 1)] float shootSoundVolume;
 
+    bool bossAdd = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
         shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        if (FindObjectsOfType<Boss>().Length > 0)
+        {
+            bossAdd = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         CountDownAndShoot();
+        if (bossAdd == true)
+        {
+            if (FindObjectOfType<Boss>().BossAlive() == false)
+            {
+                Die();
+            }
+        }
     }
 
     private void CountDownAndShoot()

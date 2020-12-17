@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0, 1)] float deathSoundVolume;
     [SerializeField] AudioClip shootSound;
     [SerializeField] [Range(0, 1)] float shootSoundVolume;
+    [SerializeField] float hitVisualTime = 0.05f;
+    bool visualHitTrigger = true;
 
     Coroutine firingCoroutine;
 
@@ -51,11 +53,12 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (other.gameObject.tag == "Enemy" ) //sudden death before enemy gets killed from Hit()
+        if (other.gameObject.tag == "Enemy" )
         {
             health = 0;
             Die();
         }
+
         else
         {
             DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
@@ -67,12 +70,29 @@ public class Player : MonoBehaviour
 
     private void ProcessHit(DamageDealer damageDealer)
     {
+        if (visualHitTrigger == true)
+        {
+            visualHitTrigger = false;
+            StartCoroutine(VisualHit());
+        }
+
         health -= damageDealer.GetDamage();
         damageDealer.Hit();
+
         if (health <= 0)
         {
-            Die();
+           Die();
         }
+    }
+
+    private IEnumerator VisualHit()
+        {
+            var sprite = GetComponent<SpriteRenderer>();
+            var originalColor = sprite.color;
+            sprite.color = new Color(1, 0, 0, 1);
+            yield return new WaitForSeconds(hitVisualTime);
+            sprite.color = originalColor;
+            visualHitTrigger = true;
     }
 
     private void Die()

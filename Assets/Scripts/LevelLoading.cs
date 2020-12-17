@@ -8,6 +8,9 @@ public class LevelLoading : MonoBehaviour
 
     [SerializeField] float deathDelayInSec = 1.5f;
     [SerializeField] float loadDelayInSec = 3f;
+    [SerializeField] float barkDelayInSec = 2f;
+    [SerializeField] AudioClip barkSound;
+    [SerializeField] [Range (0, 1)] float barkSoundVolume;
 
 
     public string GetCurrentScene()
@@ -44,6 +47,20 @@ public class LevelLoading : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
+    public void LoadNextSceneBark()
+    {
+        StartCoroutine(LoadNextSceneBarkDelay());
+    }
+
+    IEnumerator LoadNextSceneBarkDelay()
+    {
+        AudioSource.PlayClipAtPoint(barkSound, Camera.main.transform.position, barkSoundVolume);
+        yield return new WaitForSeconds(barkDelayInSec);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+
     public void LoadLevelOneEnd()
     {
         StartCoroutine(LoadLevelOneEndDelay());
@@ -52,8 +69,7 @@ public class LevelLoading : MonoBehaviour
     IEnumerator LoadLevelOneEndDelay()
     {
         yield return new WaitForSeconds(loadDelayInSec);
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        SceneManager.LoadScene("Story Menu 1");
     }
 
     public void LoadInstructions()
