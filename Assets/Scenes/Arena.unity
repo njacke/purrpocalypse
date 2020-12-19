@@ -228,6 +228,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 152087755}
     m_Modifications:
+    - target: {fileID: 1103541314, guid: 5e9a9476d6d41f7418d15abb8d6a599a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138348943, guid: 5e9a9476d6d41f7418d15abb8d6a599a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417764988, guid: 5e9a9476d6d41f7418d15abb8d6a599a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2620796137793352799, guid: 5e9a9476d6d41f7418d15abb8d6a599a, type: 3}
       propertyPath: m_Name
       value: Game Canvas
@@ -377,6 +389,10 @@ PrefabInstance:
     - target: {fileID: 1844095719193673303, guid: ace03bf0e9dc8244bb17b6585641f430, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8744410765440987360, guid: ace03bf0e9dc8244bb17b6585641f430, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ace03bf0e9dc8244bb17b6585641f430, type: 3}
@@ -756,6 +772,10 @@ PrefabInstance:
     - target: {fileID: 3846996191624023465, guid: b64f4a55d63f60c4cbf56eee25a83a07, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner Arena
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846996191624023465, guid: b64f4a55d63f60c4cbf56eee25a83a07, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3846996191624023467, guid: b64f4a55d63f60c4cbf56eee25a83a07, type: 3}
       propertyPath: m_RootOrder

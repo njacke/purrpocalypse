@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703738dafe2191544a5b73044994bd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathDelayInSec: 2.5
-  loadDelayInSec: 5
-  barkDelayInSec: 2
-  barkSound: {fileID: 8300000, guid: c211d281c1f89f54293c76818a677ec6, type: 3}
-  barkSoundVolume: 1
+  deathDelayInSec: 1.5
+  loadDelayInSec: 3
+  barkDelayInSec: 0.5
+  victoryDelayInSec: 4
+  barkSound: {fileID: 8300000, guid: 7188c10e67fb9e44cb03678cad3d3c23, type: 3}
+  barkSoundVolume: 0.405

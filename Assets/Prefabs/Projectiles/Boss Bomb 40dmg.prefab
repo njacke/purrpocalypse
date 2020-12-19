@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4909763733350625288}
   - component: {fileID: 5449314315245735265}
   m_Layer: 11
-  m_Name: 30dmg Bomb Boss
+  m_Name: Boss Bomb 40dmg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: -518483483
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a2b9f68d6d220834f89f301a76584b92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a1c95027fefd4c4ba332a393d7ee019, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.13, y: 0.37}
+  m_Size: {x: 0.48, y: 0.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -119,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed10d1c8f320374b8e5ebab40e4a818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 40
+  damageIncrease: 0
 --- !u!58 &-4909763733350625288
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,9 +134,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.01}
   serializedVersion: 2
-  m_Radius: 0.17
+  m_Radius: 0.25
 --- !u!114 &5449314315245735265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,4 +149,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4129e154e79c3e44aa1c50860589bf0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedOfSpin: 270
+  speedOfSpin: 540

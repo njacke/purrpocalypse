@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Missile : MonoBehaviour
 {
+    bool failCalled = false;
+    [SerializeField] float failDelay = 2f;
     Text missile;
 
     // Start is called before the first frame update
@@ -19,7 +21,20 @@ public class Missile : MonoBehaviour
     {
         if (FindObjectOfType<Countdown>().CountdownFinished() == true)
         {
-            missile.text = "MISSILE LAUNCHED";
+            if (failCalled == false)
+            {
+                StartCoroutine(CriticalFailure());
+                failCalled = true;
+            }
         }
     }
+
+    IEnumerator CriticalFailure()
+    {
+        missile.text = "MISSILE LAUNCHED";
+        yield return new WaitForSeconds(failDelay);
+        missile.text = "CRITICAL FAILURE";
+        missile.color = Color.red;
+    }
+
 }

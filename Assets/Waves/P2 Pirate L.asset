@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee8e04da8551b54785c9f8ab77565ea, type: 3}
-  m_Name: P2 Kitten C
+  m_Name: P2 Pirate L
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4861853302944693312, guid: 201d060374d79f04daef15aa83abaa37, type: 3}
-  pathPrefab: {fileID: 6844963078480526005, guid: 4179d5c7b3922234d8dcc61f2506f736, type: 3}
-  timeBetweenSpawns: 0.3
+  enemyPrefab: {fileID: 4861853302944693312, guid: 0b435ef2baa1115488173fd40d6dd9eb, type: 3}
+  pathPrefab: {fileID: 6844963078480526005, guid: e19878365e31c4647b803e7109d235e5, type: 3}
+  timeBetweenSpawns: 1.5
   spawnRandomFactor: 0
   numberOfEnemies: 1
   moveSpeed: 5

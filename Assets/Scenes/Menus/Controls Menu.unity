@@ -580,6 +580,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 877956574215090138, guid: ba942432c2c057741b572fe51a8c5e8c, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 877956574215090148, guid: ba942432c2c057741b572fe51a8c5e8c, type: 3}
       propertyPath: m_Name
       value: Controls Menu Canvas

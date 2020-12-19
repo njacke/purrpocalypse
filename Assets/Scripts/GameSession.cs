@@ -7,6 +7,7 @@ public class GameSession : MonoBehaviour
     // Start is called before the first frame update
 
     int score = 0;
+    int waveCount = 0;
     
     private void Awake()
     {
@@ -39,6 +40,17 @@ public class GameSession : MonoBehaviour
     public void ResetGame()
     {
         Destroy(gameObject);
+    }
+
+    public void AddWaveCount()
+    {
+        waveCount += 1;
+        Debug.Log(waveCount);
+    }
+
+    public int GetWaveCount()
+    {
+        return waveCount;
     }
 
 }

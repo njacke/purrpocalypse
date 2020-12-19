@@ -15,8 +15,9 @@ public class EnemySpawner : MonoBehaviour
         do
         {
             yield return StartCoroutine(SpawnAllWaves());
+            FindObjectOfType<GameSession>().AddWaveCount();
         }
-        while (looping);  
+        while (looping);
     }
 
     private IEnumerator SpawnAllWaves()

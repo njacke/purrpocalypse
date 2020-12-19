@@ -37,7 +37,7 @@ public class Countdown : MonoBehaviour
         
         if (countdownFinished == true)
         {
-            FindObjectOfType<LevelLoading>().LoadNextScene();
+            FindObjectOfType<LevelLoading>().LoadLevelOneEnd();
         }
     }
 

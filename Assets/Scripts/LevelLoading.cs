@@ -9,6 +9,7 @@ public class LevelLoading : MonoBehaviour
     [SerializeField] float deathDelayInSec = 1.5f;
     [SerializeField] float loadDelayInSec = 3f;
     [SerializeField] float barkDelayInSec = 2f;
+    [SerializeField] float victoryDelayInSec = 4f;
     [SerializeField] AudioClip barkSound;
     [SerializeField] [Range (0, 1)] float barkSoundVolume;
 
@@ -69,7 +70,8 @@ public class LevelLoading : MonoBehaviour
     IEnumerator LoadLevelOneEndDelay()
     {
         yield return new WaitForSeconds(loadDelayInSec);
-        SceneManager.LoadScene("Story Menu 1");
+        SceneManager.LoadScene("Story Menu 2");
+        FindObjectOfType<GameSession>().ResetGame();
     }
 
     public void LoadInstructions()
@@ -117,7 +119,7 @@ public class LevelLoading : MonoBehaviour
 
     IEnumerator DelayVictory()
     {
-        yield return new WaitForSeconds(deathDelayInSec);
+        yield return new WaitForSeconds(victoryDelayInSec);
         SceneManager.LoadScene("Story Menu 3");
     }
 

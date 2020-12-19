@@ -517,6 +517,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 9bb5a5c3fc72ea44fb833f2c02826386, type: 3}
     - target: {fileID: 1229527425413546435, guid: 1fab9f7cd763f3c4780dbcd65e0dd293, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.7607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229527425413546435, guid: 1fab9f7cd763f3c4780dbcd65e0dd293, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229527425413546435, guid: 1fab9f7cd763f3c4780dbcd65e0dd293, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.45098042
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229527425413546435, guid: 1fab9f7cd763f3c4780dbcd65e0dd293, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -628,12 +640,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8113459308856566143, guid: 1fab9f7cd763f3c4780dbcd65e0dd293, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8986911732347348696, guid: 1fab9f7cd763f3c4780dbcd65e0dd293, type: 3}
       propertyPath: m_text
       value: "Welcome back.\r\n\r\nNot all has gone according to our plan. You bought
         us enough time to launch STR L4-1Z missile but unfortunately it backfired
         so our race is no longer able to reproduce. We are all that is left of doganity
-        now.\r\n\r\nHowever, there is another, more urgent problem. After our failure
+        now.\r\n\r\nHowever, we have more urgent matters to adress. After our failure
         the M0TH3R-breeder sensed our weakness and took off. Your ship has been repaired.
         Now we need you to go back in space for one more fight and prevent the purrpocalypse.\n\r\nDog
         help us all!\r"

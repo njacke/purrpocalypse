@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: P2 Cat R
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4861853302944693312, guid: 4a4a31de450b3b3408797f92aac85dec, type: 3}
-  pathPrefab: {fileID: 6844963078480526005, guid: c8b7b22e1cc466048925998119a9869e, type: 3}
+  pathPrefab: {fileID: 6844963078480526005, guid: 9a43db31db5a7a1478fb9561e0b57444, type: 3}
   timeBetweenSpawns: 0.3
   spawnRandomFactor: 0
   numberOfEnemies: 1

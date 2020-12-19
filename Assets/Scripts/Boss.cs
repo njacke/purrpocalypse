@@ -6,13 +6,19 @@ public class Boss : MonoBehaviour
 {
     [Header("Boss")]
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] float health = 100;
+    [SerializeField] float health = 4500f;
     float startHealth;
+
+    [Header("Sprites")]
+    [SerializeField] Sprite[] bossSprites;
+    float nextSpriteHP;
+    int spriteIndex = 0;
 
     // Phases
     [Header("Phases")]
-    [SerializeField] float phaseTwoHP = 600f;
-    [SerializeField] float phaseThreeHP = 300f;
+    [SerializeField] float phaseTwoHP = 3000f;
+    [SerializeField] float phaseThreeHP = 1500f;
+    [SerializeField] float spriteDiffHP = 500f;
     [SerializeField] float prephaseTimer = 10f;
     [SerializeField] GameObject phaseOnePath;
     [SerializeField] float transitionOneTimer = 5f;
@@ -30,11 +36,14 @@ public class Boss : MonoBehaviour
     [SerializeField] [Range(0, 1)] float battleStartSoundVolume;
     [SerializeField] AudioClip catSpawnSound;
     [SerializeField] [Range(0, 1)] float catSpawnSoundVolume;
+    [SerializeField] AudioClip breakSound;
+    [SerializeField] [Range(0, 1)] float breakSoundVolume;
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
     [SerializeField] AudioClip deathSound;
     [SerializeField] [Range(0, 1)] float deathSoundVolume;
     [SerializeField] float destroyDelay = 3f;
+
 
 
 
@@ -125,14 +134,6 @@ public class Boss : MonoBehaviour
     List<Transform> waypointsPhaseThree;
     int waypointIndexPhaseThree = 0;
 
-    /* 
-    [Header("Effects")]
-    [SerializeField] GameObject deathVFX;
-    [SerializeField] float durationOfExplosion = 1f;
-    [SerializeField] AudioClip deathSound;
-    [SerializeField] [Range(0, 1)] float deathSoundVolume;
-
-   */
 
     // Start is called before the first frame update
     void Start()
@@ -147,6 +148,7 @@ public class Boss : MonoBehaviour
         phaseThreeAddsTimer = phaseThreeAddsStart;
         transform.position = startPos;
         startHealth = health;
+        nextSpriteHP = startHealth - spriteDiffHP;
     }
 
 
@@ -156,6 +158,8 @@ public class Boss : MonoBehaviour
         bossPos = GetBossPos();
         conePosOne = GetConePosOne();
         conePosTwo = GetConePosTwo();
+
+        ShowSprite();
 
         if (prePhase == true)
         {
@@ -229,7 +233,24 @@ public class Boss : MonoBehaviour
         }
     }
 
-    private IEnumerator PhaseOneStart()
+    private void ShowSprite()
+    {
+        if (health <= nextSpriteHP)
+        {
+            GetComponent<SpriteRenderer>().sprite = bossSprites[spriteIndex];
+            if (spriteIndex != bossSprites.Length - 1)
+            {
+                spriteIndex += 1;
+                AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position, breakSoundVolume);
+            }
+            nextSpriteHP -= spriteDiffHP;
+        }
+
+    }
+
+
+
+        private IEnumerator PhaseOneStart()
     {
         prePhase = false;
         yield return new WaitForSeconds(prephaseTimer);
@@ -318,6 +339,7 @@ public class Boss : MonoBehaviour
                 if (phaseThreeAddsTimer <= 0)
                 {
                     StartCoroutine(phaseThreeAdds.SpawnAllWaves());
+                    AudioSource.PlayClipAtPoint(catSpawnSound, Camera.main.transform.position, catSpawnSoundVolume);
                     phaseThreeAddsTimer = phaseThreeAddsDelay;
                 }
             }

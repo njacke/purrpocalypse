@@ -99,25 +99,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   health: 4500
+  bossSprites:
+  - {fileID: 21300000, guid: 1ad9ed5413295e54ab584258716255a4, type: 3}
+  - {fileID: 21300000, guid: ec03307b687a0cd47b7578c8dd8c475b, type: 3}
+  - {fileID: 21300000, guid: 6e6252b6b2586b04182e20aed6535f59, type: 3}
+  - {fileID: 21300000, guid: d73563d602483044eb0dfc4bc1cedf1c, type: 3}
+  - {fileID: 21300000, guid: b6a68ac4493e00540873c567dd3afac1, type: 3}
+  - {fileID: 21300000, guid: 6db496e39ae5cc149a0f631ee1fa7b7f, type: 3}
+  - {fileID: 21300000, guid: 92d5a16c1dc7f90409e38956acc97829, type: 3}
+  - {fileID: 21300000, guid: 74df283da8027e84bafa0210a450776b, type: 3}
+  - {fileID: 21300000, guid: fdb060e89b7d8a14ea0704132d6f5076, type: 3}
   phaseTwoHP: 3000
   phaseThreeHP: 1500
+  spriteDiffHP: 500
   prephaseTimer: 1.5
   phaseOnePath: {fileID: 6844963078480526005, guid: e2c62f45f3e80fc4da13aad6dd9e9897, type: 3}
-  transitionOneTimer: 4
+  transitionOneTimer: 3
   phaseTwoPath: {fileID: 6844963078480526005, guid: d8e5135e5207c4944a84b93ee99d49bd, type: 3}
-  waypointWaitTime: 2
-  transitionTwoTimer: 4
+  waypointWaitTime: 3.5
+  transitionTwoTimer: 3
   phaseThreePath: {fileID: 6844963078480526005, guid: b8d5e11ac999844438df446649498e87, type: 3}
-  phaseThreeAddsStart: 2
-  phaseThreeAddsDelay: 5
+  phaseThreeAddsStart: 1
+  phaseThreeAddsDelay: 3.5
   battleStartSound: {fileID: 8300000, guid: 24dbb0e71d4288440baa8a4ab72001a5, type: 3}
   battleStartSoundVolume: 1
   catSpawnSound: {fileID: 8300000, guid: 9d9336b22b1e513489d982afc324cec0, type: 3}
   catSpawnSoundVolume: 1
+  breakSound: {fileID: 8300000, guid: 289ea50b0e533e042b67b7b358dc19be, type: 3}
+  breakSoundVolume: 1
   deathVFX: {fileID: 1333086443587916795, guid: da0b8e9437f5fe049b341a5a3b565278, type: 3}
-  durationOfExplosion: 3
+  durationOfExplosion: 2.5
   deathSound: {fileID: 8300000, guid: 149da144d3916474799c7e424dec1b50, type: 3}
-  deathSoundVolume: 0.397
+  deathSoundVolume: 0.45
   destroyDelay: 2
   AOEProjectile: {fileID: 7049940137874867403, guid: a81297e7b074c03449a569b759acd959, type: 3}
   AOEShotDelay: 0.3
@@ -139,14 +152,14 @@ MonoBehaviour:
   AOEProjectileEightSpeedX: 1
   AOEProjectileNineSpeedY: 7
   AOEProjectileNineSpeedX: 1
-  AOEShootSoundVolume: 0.5
+  AOEShootSoundVolume: 0.377
   AOEShootSound: {fileID: 8300000, guid: 4befaffab5238884b80bfd57221ceab2, type: 3}
-  BombProjectile: {fileID: 7049940137874867403, guid: 1f65ea90a06df1c498b23c0862be4b64, type: 3}
+  BombProjectile: {fileID: 7049940137874867403, guid: 2412d3dd0601e5c4cbaeffce4d9e61ed, type: 3}
   BombShotDelay: 1.25
   BombProjectileOneSpeedY: 5
   BombProjectileOneSpeedX: 0
   BombShootSoundVolume: 0.5
-  BombShootSound: {fileID: 8300000, guid: 0cc8cfc69e4ddff4a9d745c106d71a42, type: 3}
+  BombShootSound: {fileID: 8300000, guid: a85cdb327b0cf8c49afaeb081a0b610f, type: 3}
   ConeProjectile: {fileID: 7049940137874867403, guid: 03da4a336dde73543b29cc59e62a5476, type: 3}
   ConeShotDelay: 0.75
   coneOffsetY: 2.5
@@ -155,7 +168,7 @@ MonoBehaviour:
   ConeProjectileOneSpeedX: 1
   ConeProjectileTwoSpeedY: 7
   ConeProjectileTwoSpeedX: 0.5
-  ConeShootSoundVolume: 0.5
+  ConeShootSoundVolume: 0.15
   ConeShootSound: {fileID: 8300000, guid: 0cc8cfc69e4ddff4a9d745c106d71a42, type: 3}
 --- !u!50 &-2868385784921409281
 Rigidbody2D:

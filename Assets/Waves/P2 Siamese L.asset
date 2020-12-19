@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ee8e04da8551b54785c9f8ab77565ea, type: 3}
-  m_Name: P2 Kitten L
+  m_Name: P2 Siamese L
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4861853302944693312, guid: 201d060374d79f04daef15aa83abaa37, type: 3}
-  pathPrefab: {fileID: 6844963078480526005, guid: d00c432f4307219468816b1b2ee3715d, type: 3}
+  enemyPrefab: {fileID: 4861853302944693312, guid: b839d9c1e76fe1541b154239474c0221, type: 3}
+  pathPrefab: {fileID: 6844963078480526005, guid: 9a43db31db5a7a1478fb9561e0b57444, type: 3}
   timeBetweenSpawns: 0.3
   spawnRandomFactor: 0
   numberOfEnemies: 1
-  moveSpeed: 5
+  moveSpeed: 3.5

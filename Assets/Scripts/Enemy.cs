@@ -5,8 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy")]
-    [SerializeField] float health = 100;
+    [SerializeField] float health = 100f;
     [SerializeField] int scoreVaule = 100;
+    [SerializeField] float healthIncrease = 10f;
 
 
     [Header("Projectile")]
@@ -14,10 +15,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] int projectiles = 1;
-    [SerializeField] GameObject firstProjectile;
+    [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeedY = 10f;
     [SerializeField] float projectileSpeedX = 0f;
-    [SerializeField] GameObject secondProjectile;
     [SerializeField] float projectile2SpeedY = 10f;
     [SerializeField] float projectile2SpeedX = 0f;
 
@@ -37,11 +37,14 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+        health += healthIncrease * FindObjectOfType<GameSession>().GetWaveCount();
+
         if (FindObjectsOfType<Boss>().Length > 0)
         {
             bossAdd = true;
         }
+
+        shotCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
     }
 
     // Update is called once per frame
@@ -70,7 +73,7 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         GameObject laser = Instantiate(
-            firstProjectile,
+            projectile,
             transform.position,
             Quaternion.identity) as GameObject;
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(projectileSpeedX, -projectileSpeedY);
@@ -79,7 +82,7 @@ public class Enemy : MonoBehaviour
         if (projectiles > 1)
         {
             GameObject laser2 = Instantiate(
-                firstProjectile,
+                projectile,
                 transform.position,
                 Quaternion.identity) as GameObject;
             laser2.GetComponent<Rigidbody2D>().velocity = new Vector2(projectile2SpeedX, -projectile2SpeedY);

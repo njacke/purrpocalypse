@@ -128,14 +128,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 70
   scoreVaule: 400
+  healthIncrease: 10
   shotCounter: 0
   minTimeBetweenShots: 0.25
   maxTimeBetweenShots: 0.25
   projectiles: 2
-  firstProjectile: {fileID: 7049940137874867403, guid: bce8f6f11a266554399fb429962a3c91, type: 3}
+  projectile: {fileID: 7049940137874867403, guid: bce8f6f11a266554399fb429962a3c91, type: 3}
   projectileSpeedY: 3.5
   projectileSpeedX: 5
-  secondProjectile: {fileID: 7049940137874867403, guid: bce8f6f11a266554399fb429962a3c91, type: 3}
   projectile2SpeedY: 3.5
   projectile2SpeedX: -5
   deathVFX: {fileID: 1333086443587916795, guid: 8dc5c2662a8479349ba81fcdb1cc5570, type: 3}
