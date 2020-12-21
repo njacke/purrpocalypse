@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4523507488470110904}
   - component: {fileID: 7105769848845393535}
   m_Layer: 11
-  m_Name: 5dmg Laser Yellow
+  m_Name: 5dmg Laser Pink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -518483483
-  m_SortingLayer: -1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7ff6d849e3029e94dbd10d395d1b1058, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  damageIncrease: 1
+  easyDamage: 3
 --- !u!70 &7105769848845393535
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

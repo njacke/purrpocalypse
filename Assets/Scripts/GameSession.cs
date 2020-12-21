@@ -7,7 +7,7 @@ public class GameSession : MonoBehaviour
     // Start is called before the first frame update
 
     int score = 0;
-    int waveCount = 0;
+    [SerializeField] int waveCount = 0; //debug
     
     private void Awake()
     {

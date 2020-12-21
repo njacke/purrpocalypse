@@ -129,6 +129,7 @@ MonoBehaviour:
   health: 30
   scoreVaule: 200
   healthIncrease: 5
+  easyHealth: 20
   shotCounter: 0
   minTimeBetweenShots: 1.1
   maxTimeBetweenShots: 1.4

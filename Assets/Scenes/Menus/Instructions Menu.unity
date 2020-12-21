@@ -497,9 +497,53 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 584162932}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadArena
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetHardDifficulty
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelLoading, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Difficulty, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334160893834787809, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4891636643435371770, guid: 10f86b7a19c45b74f8dce679d8fc7b60, type: 3}
       propertyPath: m_text
       value: 'There are still many cat-bots roaming in space.

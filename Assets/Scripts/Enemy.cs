@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float health = 100f;
     [SerializeField] int scoreVaule = 100;
     [SerializeField] float healthIncrease = 10f;
+    [SerializeField] float easyHealth = 100f;
 
 
     [Header("Projectile")]
@@ -38,6 +39,10 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         health += healthIncrease * FindObjectOfType<GameSession>().GetWaveCount();
+        if (FindObjectOfType<Difficulty>().EasyDifficulty() == true)
+        {
+            health = easyHealth;
+        }
 
         if (FindObjectsOfType<Boss>().Length > 0)
         {

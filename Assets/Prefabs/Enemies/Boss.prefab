@@ -121,6 +121,10 @@ MonoBehaviour:
   phaseThreePath: {fileID: 6844963078480526005, guid: b8d5e11ac999844438df446649498e87, type: 3}
   phaseThreeAddsStart: 1
   phaseThreeAddsDelay: 3.5
+  easyHealth: 3600
+  easyPhaseTwoHP: 2400
+  easyPhaseThreeHP: 1200
+  easySpriteDiffHP: 400
   battleStartSound: {fileID: 8300000, guid: 24dbb0e71d4288440baa8a4ab72001a5, type: 3}
   battleStartSoundVolume: 1
   catSpawnSound: {fileID: 8300000, guid: 9d9336b22b1e513489d982afc324cec0, type: 3}

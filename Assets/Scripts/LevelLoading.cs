@@ -38,6 +38,7 @@ public class LevelLoading : MonoBehaviour
 
     public void LoadArena()
     {
+        FindObjectOfType<Difficulty>().SetHardDifficulty();
         SceneManager.LoadScene("Arena");
         FindObjectOfType<GameSession>().ResetGame();
     }
@@ -46,6 +47,20 @@ public class LevelLoading : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    public void LoadLevelOneEasy()
+    {
+        FindObjectOfType<Difficulty>().SetEasyDifficulty();
+        SceneManager.LoadScene("Level One");
+        FindObjectOfType<GameSession>().ResetGame();
+    }
+
+    public void LoadLevelOneHard()
+    {
+        FindObjectOfType<Difficulty>().SetHardDifficulty();
+        SceneManager.LoadScene("Level One");
+        FindObjectOfType<GameSession>().ResetGame();
     }
 
     public void LoadNextSceneBark()

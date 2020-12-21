@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     Coroutine firingCoroutine;
 
-    LevelLoading leveLoading;
+    LevelLoading levelLoading;
 
     float xMin;
     float xMax;
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundries();
-        leveLoading = FindObjectOfType<LevelLoading>();
+        levelLoading = FindObjectOfType<LevelLoading>();
     }
 
     // Update is called once per frame
@@ -107,18 +107,18 @@ public class Player : MonoBehaviour
 
     private void LoadGameOver()
     {
-        string currentScene = leveLoading.GetCurrentScene();
+        string currentScene = levelLoading.GetCurrentScene();
         if (currentScene == "Level One")
         {
-            leveLoading.LoadGameOverStory();
+            levelLoading.LoadGameOverStory();
         }
         if (currentScene == "Boss")
         {
-            leveLoading.LoadGameOverBoss();
+            levelLoading.LoadGameOverBoss();
         }
         if (currentScene == "Arena")
         {
-            leveLoading.LoadGameOverArena();
+            levelLoading.LoadGameOverArena();
         }
     }
 

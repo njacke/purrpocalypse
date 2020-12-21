@@ -30,6 +30,14 @@ public class Boss : MonoBehaviour
     [SerializeField] float phaseThreeAddsDelay = 3f;
     float phaseThreeAddsTimer;
 
+    //Easy
+    [Header("Easy Mode")]
+    [SerializeField] float easyHealth = 2700f;
+    [SerializeField] float easyPhaseTwoHP = 1800f;
+    [SerializeField] float easyPhaseThreeHP = 900f;
+    [SerializeField] float easySpriteDiffHP = 300f;
+
+
     // VFX and sound effects
     [Header("Effects")]
     [SerializeField] AudioClip battleStartSound;
@@ -148,6 +156,15 @@ public class Boss : MonoBehaviour
         phaseThreeAddsTimer = phaseThreeAddsStart;
         transform.position = startPos;
         startHealth = health;
+
+        if (FindObjectOfType<Difficulty>().EasyDifficulty() == true)
+        {
+            startHealth = easyHealth;
+            phaseTwoHP = easyPhaseTwoHP;
+            phaseThreeHP = easyPhaseThreeHP;
+            spriteDiffHP = easySpriteDiffHP;
+        }
+
         nextSpriteHP = startHealth - spriteDiffHP;
     }
 

@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 15
   damageIncrease: 3
+  easyDamage: 8
 --- !u!70 &7105769848845393535
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
